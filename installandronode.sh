@@ -35,6 +35,7 @@ echo ""
 echo "Please create ssh Password"
 echo "--------------------------"
 passwd
+./sshcommand.sh
 EOF
     chmod +x $TARGET_DIR/sshsetup.sh
 
