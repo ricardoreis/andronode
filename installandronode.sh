@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # START COMMAND
-# curl https://installnode.sh | bash
+# curl https://raw.githubusercontent.com/ricardoreis/andronode/main/installandronode.sh | bash
 
 TARGET_DIR=$HOME/andronode
 
@@ -39,6 +39,7 @@ EOF
     chmod +x $TARGET_DIR/sshsetup.sh
 
     echo "sshsetup.sh has been created."
+    create_ssh_command
 }
 
 create_ssh_command(){
@@ -59,5 +60,10 @@ EOF
 }
 
 
-
+install_andronode(){
+    create_target_dir
+    create_ssh_setup
+    
+}
+install_andronode
 # Create config.json
