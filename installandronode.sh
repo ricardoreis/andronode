@@ -38,8 +38,8 @@ passwd
 EOF
     chmod +x $TARGET_DIR/sshsetup.sh
 
-    echo "sshsetup.sh has been created."
-    create_ssh_command
+    echo "\nsshsetup.sh has been created."
+    
 }
 
 create_ssh_command(){
@@ -56,13 +56,14 @@ echo ""
 EOF
     chmod +x $TARGET_DIR/sshcommand.sh
     
-    echo "sshcommand.sh has been created."
+    echo "\nsshcommand.sh has been created."
 }
 
 
 install_andronode(){
     create_target_dir
     create_ssh_setup
+    create_ssh_command
     
 }
 install_andronode
