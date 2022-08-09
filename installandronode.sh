@@ -3,14 +3,16 @@
 # START COMMAND
 # curl https://raw.githubusercontent.com/ricardoreis/andronode/main/installandronode.sh | bash
 
+# https://bitcoincore.org/bin/bitcoin-core-23.0/bitcoin-23.0-arm-linux-gnueabihf.tar.gz
+
 TARGET_DIR=$HOME/andronode
 
 # Upgrade Termux Packages 
 pkg upgrade -y
 
 # Instal Termux Packages 
-pkg install termux-services -y
-pkg install bitcoin -y
+#pkg install termux-services -y
+#pkg install bitcoin -y
 
 # Termux Setup Storage
 
@@ -35,7 +37,7 @@ echo ""
 echo "Please create ssh Password"
 echo "--------------------------"
 passwd
-./sshcommand.sh 
+./sshcommand.sh
 EOF
     chmod +x $TARGET_DIR/sshsetup.sh
 
