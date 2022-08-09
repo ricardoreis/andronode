@@ -25,7 +25,7 @@ create_target_dir() {
 # SSH
 # Create SSH files
 create_ssh_setup(){
-    cat > $TARGET_DIR/sshsetup.sh <<EOF
+    cat > $TARGET_DIR/sshsetup.sh <<'EOF'
 #!/bin/sh
 pkg install openssh -y
 pkg install iproute2 -y
@@ -43,7 +43,7 @@ EOF
 }
 
 create_ssh_command(){
-    cat > $TARGET_DIR/sshcommand.sh <<EOF
+    cat > sshcommand.sh <<'EOF'
 #!/bin/bash
 USER=$(whoami)
 IP=$(ip -4 addr | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | grep -v 127.0.0.1)
