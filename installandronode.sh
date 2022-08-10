@@ -42,7 +42,7 @@ yes | pkg install bitcoin
 create_target_dir() {
     rm -rf $TARGET_DIR 
     mkdir $TARGET_DIR
-    mkdir $TARGET_DIR/webserver
+    mkdir $TARGET_DIR/webs
 }
  
 # SSH
