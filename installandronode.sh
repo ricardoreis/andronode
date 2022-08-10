@@ -86,7 +86,7 @@ EOF
 download_files(){
     curl https://raw.githubusercontent.com/ricardoreis/andronode/main/config.json -o $HOME/andronode/config.json
     curl https://raw.githubusercontent.com/ricardoreis/andronode/main/start.sh  -o $HOME/andronode/config.json
-    chmod +x $HOME/andronode/start.sh 
+    chmod +x $HOME/andronode/start.sh
 
 }
 
@@ -95,6 +95,7 @@ install_andronode(){
     create_target_dir
     create_ssh_setup
     create_ssh_command
+    download_files
     
 }
 install_andronode
