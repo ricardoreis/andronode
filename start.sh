@@ -5,7 +5,7 @@
 
 #STORAGE=$(find /storage -type d -name "com.termux" 2>/dev/null)
 #BLOCKCHAIN=$STORAGE/files/blockchain
-
+pwd
 DATADIR=$(cat config.json | grep datadir | grep -oP '"\K[^"\047]+(?=["\047])' | tail -n1)
 CONF=$(cat config.json | grep conf | grep -oP '"\K[^"\047]+(?=["\047])' | tail -n1)
 
