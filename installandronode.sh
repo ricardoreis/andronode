@@ -83,6 +83,11 @@ EOF
     printf "\nsshcommand.sh has been created."
 }
 
+download_files(){
+    curl https://raw.githubusercontent.com/ricardoreis/andronode/main/config.json -o $HOME/andronode/config.json
+    
+}
+
 
 install_andronode(){
     create_target_dir
