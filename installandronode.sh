@@ -7,6 +7,8 @@
 
 TARGET_DIR=$HOME/andronode
 
+ANDRONODE_VERSION="v.1"
+
 ARCH=$(uname -m)
 
 if [ "$ARCH" != "aarch64"  ]; then
@@ -109,6 +111,7 @@ start_bitcoin(){
 
 
 install_andronode(){
+    echo "ANDRONODE " $ANDRONODE_VERSION
     create_target_dir && create_config && create_ssh_setup && create_ssh_command && download_files 
 }
 
