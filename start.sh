@@ -5,9 +5,10 @@
 
 #STORAGE=$(find /storage -type d -name "com.termux" 2>/dev/null)
 #BLOCKCHAIN=$STORAGE/files/blockchain
-pwd
-DATADIR=$(cat config.json | grep datadir | grep -oP '"\K[^"\047]+(?=["\047])' | tail -n1)
-CONF=$(cat config.json | grep conf | grep -oP '"\K[^"\047]+(?=["\047])' | tail -n1)
+echo "start.sh v.1"
+ANDRONODE=$HOME/andronode
+DATADIR=$(cat $ANDRONOSE/config.json | grep datadir | grep -oP '"\K[^"\047]+(?=["\047])' | tail -n1)
+CONF=$(cat $ANDRONOSE/config.json | grep conf | grep -oP '"\K[^"\047]+(?=["\047])' | tail -n1)
 
 BLUE='\033[94m'
 GREEN='\033[32;1m'
