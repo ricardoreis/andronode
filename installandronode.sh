@@ -26,12 +26,14 @@ if [ "$ARCH" != "aarch64"  ]; then
 fi
 
 
-# Upgrade Termux Packages 
+# Upgrade Termux Packages
+termux-setup-storage
 pkg upgrade -y
+
 
 # Instal Termux Packages 
 #pkg install termux-services -y
-#pkg install bitcoin -y
+pkg install bitcoin -y
 
 # Termux Setup Storage
 
@@ -90,4 +92,3 @@ install_andronode(){
 }
 install_andronode
 # Create config.json
-
