@@ -85,7 +85,7 @@ EOF
 
 download_files(){
     curl https://raw.githubusercontent.com/ricardoreis/andronode/main/config.json -o $HOME/andronode/config.json
-    curl https://raw.githubusercontent.com/ricardoreis/andronode/main/start.sh  -o $HOME/andronode/config.json
+    curl https://raw.githubusercontent.com/ricardoreis/andronode/main/start.sh  -o $HOME/andronode/start.sh
     chmod +x $HOME/andronode/start.sh
 
 }
