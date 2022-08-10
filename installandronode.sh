@@ -28,7 +28,7 @@ fi
 
 # Upgrade Termux Packages
 termux-setup-storage
-yes | pkg upgrade -y
+yes | pkg upgrade
 
 
 # Instal Termux Packages 
