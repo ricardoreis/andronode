@@ -23,7 +23,7 @@ if [ "$ARCH" != "aarch64"  ]; then
     echo ""
     echo "Wait for the release of the next version of Andronode."
     echo ""
-    exit 1
+    exit 0
 fi
 
 
