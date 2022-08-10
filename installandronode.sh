@@ -7,6 +7,25 @@
 
 TARGET_DIR=$HOME/andronode
 
+ARCH=$(uname -m)
+
+if [ "$ARCH" != "aarch64"  ]; then
+    clear
+    echo ""
+    echo "INSTALLATION FAILED."
+    echo "--------------------"
+    echo ""
+    echo "Your OS Architecture is $ARCH."
+    echo ""
+    echo "Unfortunately Andronode only supports aarch64 OS Architecture."
+    echo ""
+    echo "Soon new architectures will be supported." 
+    echo ""
+    echo "Wait for the release of the next version of Andronode."
+    echo ""
+fi
+
+
 # Upgrade Termux Packages 
 pkg upgrade -y
 
