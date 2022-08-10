@@ -109,7 +109,8 @@ start_bitcoin(){
 
 
 install_andronode(){
-    create_target_dir && create_config && create_ssh_setup && create_ssh_command && download_files && start_bitcoin
+    create_target_dir && create_config && create_ssh_setup && create_ssh_command && download_files 
 }
-install_andronode
+
+install_andronode && start_bitcoin
 # Create config.json
