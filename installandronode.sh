@@ -43,6 +43,7 @@ create_target_dir() {
     rm -rf $TARGET_DIR 
     mkdir $TARGET_DIR
     mkdir $TARGET_DIR/web
+    mkdir $TARGET_DIR/blockchain
 }
  
 # SSH
@@ -96,12 +97,7 @@ start_bitcoin(){
 
 
 install_andronode(){
-    create_target_dir
-    create_ssh_setup
-    create_ssh_command
-    download_files
-    start_bitcoin
-    
+    create_target_dir && create_ssh_setup && create_ssh_command && download_files && start_bitcoin
 }
 install_andronode
 # Create config.json
