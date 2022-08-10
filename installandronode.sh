@@ -84,6 +84,20 @@ EOF
     printf "\nsshcommand.sh has been created."
 }
 
+
+create_ssh_command(){
+    cat > $TARGET_DIR/sshcommand.sh <<EOF
+{
+    "datadir": "$TARGET_DIR/blockchain",
+    "conf": "$TARGET_DIR/blockchain/bitcoin.conf"
+}
+EOF
+    
+    printf "\nconfig.json has been created."
+}
+
+
+
 download_files(){
     curl https://raw.githubusercontent.com/ricardoreis/andronode/main/config.json -o $HOME/andronode/config.json
     curl https://raw.githubusercontent.com/ricardoreis/andronode/main/start.sh  -o $HOME/andronode/start.sh
