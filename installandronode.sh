@@ -28,12 +28,12 @@ fi
 
 # Upgrade Termux Packages
 termux-setup-storage
-#pkg upgrade -y
+yes | pkg upgrade -y
 
 
 # Instal Termux Packages 
 #pkg install termux-services -y
-pkg install bitcoin -y
+yes | pkg install bitcoin
 
 # Termux Setup Storage
 
@@ -50,8 +50,8 @@ create_target_dir() {
 create_ssh_setup(){
     cat > $TARGET_DIR/sshsetup.sh <<'EOF'
 #!/bin/sh
-pkg install openssh -y
-pkg install iproute2 -y
+yes | pkg install openssh
+yes | pkg install iproute2
 sshd
 clear
 echo ""
