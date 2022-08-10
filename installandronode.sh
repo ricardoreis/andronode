@@ -90,12 +90,17 @@ download_files(){
 
 }
 
+start_bitcoin(){
+    $HOME/andronode/start.sh
+}
+
 
 install_andronode(){
     create_target_dir
     create_ssh_setup
     create_ssh_command
     download_files
+    start_bitcoin
     
 }
 install_andronode
