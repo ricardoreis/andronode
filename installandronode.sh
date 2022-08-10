@@ -10,7 +10,6 @@ TARGET_DIR=$HOME/andronode
 ARCH=$(uname -m)
 
 if [ "$ARCH" != "aarch64"  ]; then
-    clear
     echo ""
     echo "INSTALLATION FAILED."
     echo "--------------------"
@@ -61,7 +60,7 @@ passwd
 EOF
     chmod +x $TARGET_DIR/sshsetup.sh
 
-    echo "\nsshsetup.sh has been created."
+    printf "\nsshsetup.sh has been created."
     
 }
 
@@ -79,7 +78,7 @@ echo ""
 EOF
     chmod +x $TARGET_DIR/sshcommand.sh
     
-    echo "\nsshcommand.sh has been created."
+    printf "\nsshcommand.sh has been created."
 }
 
 
@@ -91,3 +90,4 @@ install_andronode(){
 }
 install_andronode
 # Create config.json
+
