@@ -85,8 +85,8 @@ EOF
 }
 
 
-create_ssh_command(){
-    cat > $TARGET_DIR/sshcommand.sh <<EOF
+create_config(){
+    cat > $TARGET_DIR/config.json <<EOF
 {
     "datadir": "$TARGET_DIR/blockchain",
     "conf": "$TARGET_DIR/blockchain/bitcoin.conf"
@@ -99,10 +99,8 @@ EOF
 
 
 download_files(){
-    curl https://raw.githubusercontent.com/ricardoreis/andronode/main/config.json -o $HOME/andronode/config.json
     curl https://raw.githubusercontent.com/ricardoreis/andronode/main/start.sh  -o $HOME/andronode/start.sh
     chmod +x $HOME/andronode/start.sh
-
 }
 
 start_bitcoin(){
@@ -111,7 +109,7 @@ start_bitcoin(){
 
 
 install_andronode(){
-    create_target_dir && create_ssh_setup && create_ssh_command && download_files && start_bitcoin
+    create_target_dir && create_config && create_ssh_setup && create_ssh_command && download_files && start_bitcoin
 }
 install_andronode
 # Create config.json
