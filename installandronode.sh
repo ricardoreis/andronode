@@ -127,6 +127,7 @@ download_files(){
 }
 
 start_bitcoin(){
+    print_warning "\nANDRONODE $ANDRONODE_VERSION STARTING...\n"
     $HOME/andronode/start.sh
 }
 
