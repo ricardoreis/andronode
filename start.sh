@@ -7,8 +7,6 @@ echo "start.sh v.0.1"
 #BLOCKCHAIN=$STORAGE/files/blockchain
 
 ANDRONODE=$HOME/andronode
-pwd 
-echo $ANDRONOSE
 DATADIR=$(cat $ANDRONODE/config.json | grep datadir | grep -oP '"\K[^"\047]+(?=["\047])' | tail -n1)
 CONF=$(cat $ANDRONODE/config.json | grep conf | grep -oP '"\K[^"\047]+(?=["\047])' | tail -n1)
 
