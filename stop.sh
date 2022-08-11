@@ -35,7 +35,8 @@ stop_bitcoin_core() {
         timer=0
         until [ ! -f $DATADIR/bitcoind.pid ] || [ $timer -eq 120 ]; do
             timer=$((timer + 1))
-            print_info $timer
+            TAIL=$(tail -1 $DATADIR/debug.log)
+            print_info "$timer - $TAIL"
             sleep $timer
         done
 
