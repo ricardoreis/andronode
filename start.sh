@@ -1,10 +1,5 @@
 #!/bin/sh
-echo "start.sh v.0.1"
-# command to get datadir on config.json
-# cat config.json | grep datadir | grep -oP '"\K[^"\047]+(?=["\047])' | tail -n1
-
-#STORAGE=$(find /storage -type d -name "com.termux" 2>/dev/null)
-#BLOCKCHAIN=$STORAGE/files/blockchain
+#echo "start.sh v.0.1"
 
 ANDRONODE=$HOME/andronode
 DATADIR=$(cat $ANDRONODE/config.json | grep datadir | grep -oP '"\K[^"\047]+(?=["\047])' | tail -n1)
