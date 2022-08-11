@@ -58,6 +58,7 @@ yes | pkg upgrade
 #pkg install termux-services -y
 yes | pkg install bitcoin
 yes | pkg install nodejs
+yes | pkg install git
 
 # Termux Setup Storage
 
@@ -130,11 +131,14 @@ install_node_modules(){
     npm install shelljs    
 }
 
-download_files(){
-    curl https://raw.githubusercontent.com/ricardoreis/andronode/main/start.sh  -o $HOME/andronode/start.sh && chmod +x $HOME/andronode/start.sh
-    curl https://raw.githubusercontent.com/ricardoreis/andronode/main/stop.sh  -o $HOME/andronode/stop.sh && chmod +x $HOME/andronode/stop.sh
-    curl https://raw.githubusercontent.com/ricardoreis/andronode/main/web/webserver.js  -o $HOME/andronode/web/webserver.js
-    curl https://raw.githubusercontent.com/ricardoreis/andronode/main/web/public/index.html -o $HOME/andronode/web/public/index.html
+git_clone(){
+    cd $HOME
+    git clone https://github.com/ricardoreis/andronode.git
+    chmod +x $TARGET_DIR/*.sh
+    #curl https://raw.githubusercontent.com/ricardoreis/andronode/main/start.sh  -o $HOME/andronode/start.sh && chmod +x $HOME/andronode/start.sh
+    #curl https://raw.githubusercontent.com/ricardoreis/andronode/main/stop.sh  -o $HOME/andronode/stop.sh && chmod +x $HOME/andronode/stop.sh
+    #curl https://raw.githubusercontent.com/ricardoreis/andronode/main/web/webserver.js  -o $HOME/andronode/web/webserver.js
+    #curl https://raw.githubusercontent.com/ricardoreis/andronode/main/web/public/index.html -o $HOME/andronode/web/public/index.html
 }
 
 start_bitcoin(){
@@ -145,11 +149,11 @@ start_bitcoin(){
 
 install_andronode(){
     print_warning "\nINSTALLING ANDRONODE $ANDRONODE_VERSION \n"
-    create_target_dir
-    create_config
+    cd $HOME && rm -rf $TARGET_DIR
+    #create_config
     create_ssh_setup
     create_ssh_command
-    download_files
+    git_clone
     install_node_modules
     print_success "\nSUCCESS, ANDRONODE INSTALLED.\n" 
 }
