@@ -14,20 +14,18 @@ RESET='\033[0m'
 print_info() {
     printf "$BLUE$1$RESET\n"
 }
-
 print_success() {
     printf "$GREEN$1$RESET\n"
     sleep 1
 }
-
 print_warning() {
     printf "$YELLOW$1$RESET\n"
 }
-
 print_error() {
     printf "$RED$1$RESET\n"
     sleep 1
 }
+
 check_storage(){
   if [ -d "$DATADIR" ]; then
     ### Take action if $DATADIR exists ###

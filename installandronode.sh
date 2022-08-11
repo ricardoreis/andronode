@@ -3,11 +3,32 @@
 # START COMMAND
 # curl https://raw.githubusercontent.com/ricardoreis/andronode/main/installandronode.sh | bash
 
-# https://bitcoincore.org/bin/bitcoin-core-23.0/bitcoin-23.0-arm-linux-gnueabihf.tar.gz
+
 
 TARGET_DIR=$HOME/andronode
 
-ANDRONODE_VERSION="v.1"
+ANDRONODE_VERSION="v.0.1"
+
+BLUE='\033[94m'
+GREEN='\033[32;1m'
+YELLOW='\033[33;1m'
+RED='\033[91;1m'
+RESET='\033[0m'
+
+print_info() {
+    printf "$BLUE$1$RESET\n"
+}
+print_success() {
+    printf "$GREEN$1$RESET\n"
+    sleep 1
+}
+print_warning() {
+    printf "$YELLOW$1$RESET\n"
+}
+print_error() {
+    printf "$RED$1$RESET\n"
+    sleep 1
+}
 
 ARCH=$(uname -m)
 
@@ -101,8 +122,8 @@ EOF
 
 
 download_files(){
-    curl https://raw.githubusercontent.com/ricardoreis/andronode/main/start.sh  -o $HOME/andronode/start.sh
-    chmod +x $HOME/andronode/start.sh
+    curl https://raw.githubusercontent.com/ricardoreis/andronode/main/start.sh  -o $HOME/andronode/start.sh && chmod +x $HOME/andronode/start.sh
+    curl https://raw.githubusercontent.com/ricardoreis/andronode/main/stop.sh  -o $HOME/andronode/stop.sh && chmod +x $HOME/andronode/stop.sh
 }
 
 start_bitcoin(){
@@ -111,7 +132,7 @@ start_bitcoin(){
 
 
 install_andronode(){
-    echo "ANDRONODE " $ANDRONODE_VERSION
+    print_warning "\nINSTALLING ANDRONODE $ANDRONODE_VERSION \n"
     create_target_dir && create_config && create_ssh_setup && create_ssh_command && download_files 
 }
 
