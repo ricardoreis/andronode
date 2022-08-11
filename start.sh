@@ -29,11 +29,10 @@ print_error() {
 check_storage(){
   if [ -d "$DATADIR" ]; then
     ### Take action if $DATADIR exists ###
-    print_info "External Drive detected ${DATADIR}..."
-    check_blockchain
+    print_info "Datadir folder detected ${DATADIR}..."
   else
     ###  Control will jump here if $DATADIR does NOT exists ###
-    print_error "Error: External Drive not found. Can not continue."
+    print_error "Error: Datadir folder not found. Can not continue."
     exit 1
   fi
 }

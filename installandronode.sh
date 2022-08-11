@@ -133,7 +133,8 @@ start_bitcoin(){
 
 install_andronode(){
     print_warning "\nINSTALLING ANDRONODE $ANDRONODE_VERSION \n"
-    create_target_dir && create_config && create_ssh_setup && create_ssh_command && download_files 
+    create_target_dir && create_config && create_ssh_setup && create_ssh_command && download_files
+    print_success "\nSUCCESS, ANDRONODE INSTALLED.\n" 
 }
 
 install_andronode && start_bitcoin
