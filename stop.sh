@@ -29,13 +29,13 @@ print_error() {
 
 stop_bitcoin_core() {
     if [ -f $DATADIR/bitcoind.pid ]; then
-        print_info "\nStopping Bitcoin Core.."
+        print_info "\nStopping Bitcoin Core...\n"
         kill $(cat $DATADIR/bitcoind.pid)
 
         timer=0
         until [ ! -f $DATADIR/bitcoind.pid ] || [ $timer -eq 120 ]; do
             timer=$((timer + 1))
-            echo $timer
+            print_info $timer
             sleep $timer
         done
 
