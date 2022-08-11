@@ -57,6 +57,7 @@ yes | pkg upgrade
 # Instal Termux Packages 
 #pkg install termux-services -y
 yes | pkg install bitcoin
+yes | pkg install nodejs
 
 # Termux Setup Storage
 
@@ -65,8 +66,12 @@ yes | pkg install bitcoin
 create_target_dir() {
     rm -rf $TARGET_DIR 
     mkdir $TARGET_DIR
-    mkdir $TARGET_DIR/web
     mkdir $TARGET_DIR/blockchain
+    mkdir $TARGET_DIR/web
+    mkdir $TARGET_DIR/web/public
+    mkdir $TARGET_DIR/web/public/images
+    mkdir $TARGET_DIR/web/public/css
+    mkdir $TARGET_DIR/web/public/js
 }
  
 # SSH
@@ -119,11 +124,17 @@ EOF
     printf "\nconfig.json has been created."
 }
 
-
+install_node_modules(){
+    cd $TARGET_DIR/web
+    npm install ip
+    npm install shelljs    
+}
 
 download_files(){
     curl https://raw.githubusercontent.com/ricardoreis/andronode/main/start.sh  -o $HOME/andronode/start.sh && chmod +x $HOME/andronode/start.sh
     curl https://raw.githubusercontent.com/ricardoreis/andronode/main/stop.sh  -o $HOME/andronode/stop.sh && chmod +x $HOME/andronode/stop.sh
+    curl https://raw.githubusercontent.com/ricardoreis/andronode/main/web/webserver.js  -o $HOME/andronode/web/webserver.js
+    curl https://raw.githubusercontent.com/ricardoreis/andronode/main/web/public/index.html -o $HOME/andronode/web/public/index.html
 }
 
 start_bitcoin(){
@@ -134,7 +145,12 @@ start_bitcoin(){
 
 install_andronode(){
     print_warning "\nINSTALLING ANDRONODE $ANDRONODE_VERSION \n"
-    create_target_dir && create_config && create_ssh_setup && create_ssh_command && download_files
+    create_target_dir
+    create_config
+    create_ssh_setup
+    create_ssh_command
+    download_files
+    install_node_modules
     print_success "\nSUCCESS, ANDRONODE INSTALLED.\n" 
 }
 
