@@ -5,7 +5,9 @@ Start a Bitcoin full node on your Android device to help validate and relay Bitc
 What will you need?
 
 1 - Device (smartphone, tablet, tv box...) with Android 7.0 or newer
+
 2 - Termux App
+
 3 - Run Andronode 
 
 Install Termux Application
