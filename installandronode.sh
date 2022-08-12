@@ -64,10 +64,8 @@ yes | pkg install git
 
 
 # Create Folders
-create_fol() {
-    rm -rf $TARGET_DIR 
-    mkdir $TARGET_DIR
-    mkdir $TARGET_DIR/blockchain
+create_blockchain_folder() {
+    mkdir -p $TARGET_DIR/blockchain
 }
  
 # SSH
@@ -149,6 +147,7 @@ install_andronode(){
     create_ssh_setup
     create_ssh_command
     git_clone
+    create_blockchain_folder
     install_node_modules
     print_success "\nSUCCESS, ANDRONODE INSTALLED.\n" 
 }
