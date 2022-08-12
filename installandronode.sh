@@ -86,6 +86,7 @@ git_clone(){
     then
         # print_error "\nINSTALLATION FAILED.\n"
         # exit 0
+        echo "Bitcoin Core was probably running. Trying to remove again."
         rm -rf $TARGET_DIR
     fi  
     git clone https://github.com/ricardoreis/andronode.git
