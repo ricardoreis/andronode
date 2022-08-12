@@ -47,7 +47,7 @@ if [ "$ARCH" != "aarch64"  ]; then
 fi
 
 upgrade_termux(){
-    print_warning "\nUPDATING TERMUX PACKAGES \n"
+    print_warning "\nUPDATING TERMUX\n"
     termux-setup-storage
     yes | pkg upgrade
     # Instal Termux Packages 
@@ -84,8 +84,9 @@ git_clone(){
     rm -rf $TARGET_DIR
     if [ -d "$TARGET_DIR" ] 
     then
-        print_error "\nINSTALLATION FAILED.\N"
-        exit 0
+        # print_error "\nINSTALLATION FAILED.\n"
+        # exit 0
+        rm -rf $TARGET_DIR
     fi  
     git clone https://github.com/ricardoreis/andronode.git
     chmod +x $TARGET_DIR/*.sh
