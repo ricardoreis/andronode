@@ -85,12 +85,14 @@ install_node_modules(){
 
 git_clone(){
     cd $HOME
+    rm -rf $TARGET_DIR
+    if [ -d "$TARGET_DIR" ] 
+    then
+        print_error "\nINSTALLATION FAILED.\N"
+        exit 0
+    fi  
     git clone https://github.com/ricardoreis/andronode.git
     chmod +x $TARGET_DIR/*.sh
-    #curl https://raw.githubusercontent.com/ricardoreis/andronode/main/start.sh  -o $HOME/andronode/start.sh && chmod +x $HOME/andronode/start.sh
-    #curl https://raw.githubusercontent.com/ricardoreis/andronode/main/stop.sh  -o $HOME/andronode/stop.sh && chmod +x $HOME/andronode/stop.sh
-    #curl https://raw.githubusercontent.com/ricardoreis/andronode/main/web/webserver.js  -o $HOME/andronode/web/webserver.js
-    #curl https://raw.githubusercontent.com/ricardoreis/andronode/main/web/public/index.html -o $HOME/andronode/web/public/index.html
 }
 
 start_bitcoin(){
@@ -105,7 +107,6 @@ start_webserver(){
 
 install_andronode(){
     print_warning "\nINSTALLING ANDRONODE $ANDRONODE_VERSION \n"
-    cd $HOME && rm -rf $TARGET_DIR
     git_clone
     create_blockchain_folder
     install_node_modules
