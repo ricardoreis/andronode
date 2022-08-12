@@ -3,8 +3,6 @@
 # START COMMAND
 # curl https://raw.githubusercontent.com/ricardoreis/andronode/main/installandronode.sh | bash
 
-
-
 TARGET_DIR=$HOME/andronode
 
 ANDRONODE_VERSION="v.0.2"
@@ -68,45 +66,6 @@ create_blockchain_folder() {
     mkdir -p $TARGET_DIR/blockchain
 }
  
-# SSH
-# Create SSH files
-create_ssh_setup(){
-    cat > $TARGET_DIR/sshsetup.sh <<'EOF'
-#!/bin/sh
-yes | pkg install openssh
-yes | pkg install iproute2
-clear
-echo ""
-echo "Please create ssh Password"
-echo "--------------------------"
-passwd
-./sshcommand.sh
-EOF
-    chmod +x $TARGET_DIR/sshsetup.sh
-
-    printf "\nsshsetup.sh has been created."
-    
-}
-
-create_ssh_command(){
-    cat > $TARGET_DIR/sshcommand.sh <<'EOF'
-#!/bin/bash
-sshd
-USER=$(whoami)
-IP=$(ip -4 addr | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | grep -v 127.0.0.1)
-echo ""
-echo "COMMAND:"
-echo ""
-echo "     ssh -p 8022 $USER@$IP"
-echo ""
-echo ""
-EOF
-    chmod +x $TARGET_DIR/sshcommand.sh
-    
-    printf "\nsshcommand.sh has been created."
-}
-
-
 create_config(){
     cat > $TARGET_DIR/config.json <<EOF
 {
@@ -143,9 +102,6 @@ start_bitcoin(){
 install_andronode(){
     print_warning "\nINSTALLING ANDRONODE $ANDRONODE_VERSION \n"
     cd $HOME && rm -rf $TARGET_DIR
-    #create_config
-    create_ssh_setup
-    create_ssh_command
     git_clone
     create_blockchain_folder
     install_node_modules
