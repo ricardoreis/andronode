@@ -98,6 +98,10 @@ start_bitcoin(){
     $HOME/andronode/start.sh
 }
 
+start_webserver(){
+    node $TARGET_DIR/web/webserver.js
+}
+
 
 install_andronode(){
     print_warning "\nINSTALLING ANDRONODE $ANDRONODE_VERSION \n"
@@ -108,5 +112,5 @@ install_andronode(){
     print_success "\nSUCCESS, ANDRONODE INSTALLED.\n" 
 }
 
-install_andronode && start_bitcoin
+install_andronode && start_bitcoin && start_webserver
 # Create config.json
