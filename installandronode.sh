@@ -64,15 +64,10 @@ yes | pkg install git
 
 
 # Create Folders
-create_target_dir() {
+create_fol() {
     rm -rf $TARGET_DIR 
     mkdir $TARGET_DIR
     mkdir $TARGET_DIR/blockchain
-    mkdir $TARGET_DIR/web
-    mkdir $TARGET_DIR/web/public
-    mkdir $TARGET_DIR/web/public/images
-    mkdir $TARGET_DIR/web/public/css
-    mkdir $TARGET_DIR/web/public/js
 }
  
 # SSH
