@@ -46,22 +46,17 @@ if [ "$ARCH" != "aarch64"  ]; then
     exit 0
 fi
 
+upgrade_termux(){
+    print_warning "\nUPDATING TERMUX PACKAGES \n"
+    termux-setup-storage
+    yes | pkg upgrade
+    # Instal Termux Packages 
+    #pkg install termux-services -y
+    yes | pkg install bitcoin
+    yes | pkg install nodejs
+    yes | pkg install git
+}
 
-# Upgrade Termux Packages
-termux-setup-storage
-yes | pkg upgrade
-
-
-# Instal Termux Packages 
-#pkg install termux-services -y
-yes | pkg install bitcoin
-yes | pkg install nodejs
-yes | pkg install git
-
-# Termux Setup Storage
-
-
-# Create Folders
 create_blockchain_folder() {
     mkdir -p $TARGET_DIR/blockchain
 }
@@ -84,6 +79,7 @@ install_node_modules(){
 }
 
 git_clone(){
+    print_warning "\nINSTALLING ANDRONODE $ANDRONODE_VERSION \n"
     cd $HOME
     rm -rf $TARGET_DIR
     if [ -d "$TARGET_DIR" ] 
@@ -106,7 +102,7 @@ start_webserver(){
 
 
 install_andronode(){
-    print_warning "\nINSTALLING ANDRONODE $ANDRONODE_VERSION \n"
+    upgrade_termux
     git_clone
     create_blockchain_folder
     install_node_modules
