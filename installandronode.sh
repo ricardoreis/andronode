@@ -98,6 +98,7 @@ start_bitcoin(){
 }
 
 start_webserver(){
+    print_warning "\nWEBSERVER STARTING...\n"
     node $TARGET_DIR/web/webserver.js
 }
 
