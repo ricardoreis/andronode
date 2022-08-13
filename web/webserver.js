@@ -15,6 +15,12 @@ const content = `let ip = "${ip}"`;
   // file written successfully
 }); */
 
+let config = '';
+fs.readFile('../config.json', (err, data) => {
+    if (err) throw err;
+    config = JSON.parse(data);
+});
+
 
 const requestListener = function (req, res){
 
@@ -44,6 +50,13 @@ const requestListener = function (req, res){
 
     }else if(req.url == "/getinfo"){
         let json = shell.exec('../getinfo.sh',{silent:true});
+        json = json.stdout;
+        res.setHeader("Content-Type", "application/json")
+        res.writeHead(200);
+        res.end(json);
+
+    }else if(req.url == "/cli"){
+        let json = shell.exec(`bitcoin-cli -datadir=${config.datadir} getblockchaininfo`,{silent:true});
         json = json.stdout;
         res.setHeader("Content-Type", "application/json")
         res.writeHead(200);
