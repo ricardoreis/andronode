@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 ANDRONODE=$HOME/andronode
 DATADIR=$(cat $ANDRONODE/config.json | grep datadir | grep -oP '"\K[^"\047]+(?=["\047])' | tail -n1)
 CONF=$(cat $ANDRONODE/config.json | grep conf | grep -oP '"\K[^"\047]+(?=["\047])' | tail -n1)
@@ -27,16 +27,33 @@ print_error() {
     sleep 1
 }
 
+wait_shutdown(){
+    tail -f $DATADIR/debug.log &
+    pid=$!
+
+    STR=$(tail -1 $DATADIR/debug.log)
+    SUB='Shutdown: done'
+
+    while [[ "$STR" != *"$SUB"* ]]
+    do
+        STR=$(tail -1 $DATADIR/debug.log)
+    done
+    kill $pid
+}
+
 stop_bitcoin_core() {
     if [ -f $DATADIR/bitcoind.pid ]; then
         print_info "\nStopping Bitcoin Core...\n"
         kill $(cat $DATADIR/bitcoind.pid)
 
+        wait_shutdown
+
         timer=0
         until [ ! -f $DATADIR/bitcoind.pid ] || [ $timer -eq 120 ]; do
             timer=$((timer + 1))
-            TAIL=$(tail -1 $DATADIR/debug.log)
-            print_info "$timer - $TAIL"
+
+            #TAIL=$(tail -1 $DATADIR/debug.log)
+            #print_info "$timer - $TAIL"
             sleep $timer
         done
 
