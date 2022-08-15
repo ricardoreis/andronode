@@ -20,4 +20,4 @@ This version requires Android 7.0 or newer.
 
 Install Andronode running this command:
 
-curl https://raw.githubusercontent.com/ricardoreis/andronode/main/installandronode.sh | bash
+`curl https://raw.githubusercontent.com/ricardoreis/andronode/main/installandronode.sh | bash`
