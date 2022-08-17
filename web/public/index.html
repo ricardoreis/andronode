@@ -13,11 +13,11 @@
           <img src="images/bitcoin-core.svg" alt="Bitcoin Core ">
           <hr>          <div class="row justify-content-between mt-3">
             <div class="col-9">
-              <p class="fw-bold text-success">Bitcoin Core is running.</p>
+              <p id="status" class="fw-bold text-success">Bitcoin Core is running.</p>
             </div>
             <div class="col-3">
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button type="button" class="btn btn-sm btn-outline-danger">Stop</button>
+                <button id="btnStarStop" type="button" class="btn btn-sm btn-outline-danger">Stop</button>
               </div>
             </div>
           </div>
@@ -37,6 +37,10 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
   <script>
+
+let btn = document.querySelector("#btn");
+let status = document.querySelector("#status");
+let progressbar = document.querySelector(".progress-bar");
 
 let url = 'getinfo';
 /*
@@ -81,9 +85,18 @@ async function getinfo() {
 async function renderinfo() {
     let info = await getinfo();
     console.log(info);
+    render(info.status);
     info = JSON.stringify(info);
     document.querySelector("#json").innerHTML = info;
     renderinfo();
+}
+
+render(status){
+  if (status == "stoped"){
+    btn.className = 'btn btn-sm btn-success';
+    status.className = 'fw-bold text-danger';
+    progressbar.className = 'btn btn-sm btn-success';
+  }
 }
 
 renderinfo();
