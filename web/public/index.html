@@ -26,6 +26,7 @@
           </div>
           <div class="card mt-5">
             <div class="card-body">
+              <div id="json"></div>
               This is some text within a card body.
             </div>
           </div>
@@ -52,6 +53,21 @@ fetch(url)
     });
 */ 
 
+function loop(){
+    fetch(url)
+    .then(response => {
+        // handle the response
+        console.log("ok");
+        renderinfo();
+    })
+    .catch(error => {
+        // handle the error
+        console.log("deu erro");
+        console.log("show loading screen");
+    });
+}
+
+
 async function getinfo() {
     try {
         let res = await fetch(url);
@@ -64,11 +80,13 @@ async function getinfo() {
 
 async function renderinfo() {
     let info = await getinfo();
-    console.log("typeof: " +  typeof info)
     console.log(info);
+    document.querySelector("#json").innerHTML = info;
+    renderinfo();
 }
 
 renderinfo();
+setInterval(loop, 3000);
 
 
   </script>
