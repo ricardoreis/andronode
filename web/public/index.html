@@ -63,7 +63,8 @@ async function getinfo() {
 }
 
 async function renderinfo() {
-    info = await getinfo();
+    let info = await getinfo();
+    console.log("typeof: " +  typeof info)
     console.log(info);
 }
 
