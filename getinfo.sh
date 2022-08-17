@@ -89,8 +89,8 @@ echo "{\
 \"progress\":$PROGRESS,\
 \"external\":\"$EXTERNALDRIVE\",\
 \"pid\":$PID,\
-\"pidstart\":$PIDSTART,\
-\"pidstop\":$PIDSTOP,\
+\"pidstart\":\"$PIDSTART\",\
+\"pidstop\":\"$PIDSTOP\",\
 \"status\":$STATUS,\
 \"size\":\"$SIZE\"\
 }"

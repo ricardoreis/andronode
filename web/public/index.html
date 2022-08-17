@@ -35,5 +35,35 @@
       
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+  <script>
+
+let url = 'getinfo';
+   
+fetch(url)
+    .then(response => {
+        // handle the response
+        console.log("ok");
+        renderinfo(url);
+    })
+    .catch(error => {
+        // handle the error
+        console.log("deu erro");
+        console.log("show loading screen");
+    });
+
+async function renderinfo(url) {
+    info = await getinfo(url);
+    console.log(info);
+}
+
+async function getinfo(url) {
+    try {
+        let res = await fetch(url);
+        return await res.json();
+    } catch (error) {
+        console.log(error);
+    }
+}
+  </script>
   </body>
 </html>
