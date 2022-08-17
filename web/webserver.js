@@ -55,7 +55,7 @@ const requestListener = function (req, res){
         fileStream.pipe(res);
 
     }else if(req.url == "/getinfo"){
-        let json = shell.exec('bash ../getinfo.sh',{silent:true});
+        let json = shell.exec(`bash ${config.andronode}/getinfo.sh`,{silent:true});
         json = json.stdout;
         res.setHeader("Content-Type", "application/json")
         res.writeHead(200);

@@ -1,4 +1,5 @@
 {
+    "andronode": "/data/data/com.termux/files/home/andronode/",
     "datadir": "/data/data/com.termux/files/home/andronode/blockchain",
     "conf": "/data/data/com.termux/files/home/andronode/blockchain/bitcoin.conf"
 }
