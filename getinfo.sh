@@ -1,7 +1,6 @@
 #!/bin/bash
 
 STORAGE=$(find /storage -type d -name "com.termux" 2>/dev/null)
-#BLOCKCHAIN=$STORAGE/files/blockchain
 
 ANDRONODE=$HOME/andronode
 DATADIR=$(cat $ANDRONODE/config.json | grep datadir | grep -oP '"\K[^"\047]+(?=["\047])' | tail -n1)
@@ -32,6 +31,8 @@ PID=0
     if kill -0 $PID > /dev/null 2>&1
       then
       PID="$PID"
+      PIDSTOP=$(ps -o pid,args -C bash | awk '/stop.sh/ { print $1 }')
+      PIDSTART=$(ps -o pid,args -C bash | awk '/start.sh/ { print $1 }')
       # Do something knowing the pid exists, i.e. the process with $PID is runn>
       else
       PID=0
@@ -50,15 +51,46 @@ check_debug(){
 fi
 }
 
+
+
+check_status(){
+# starting
+#   PID and !Progress
+if [ "$PIDSTART" != "" ]; then
+  STATUS="starting"
+
+# stoping
+#   PID and stop.sh PID
+elif [ "$PIDSTOP" != "" ]; then
+  STATUS="stopping"
+
+# running
+#   PID and Progress
+elif [ "$PID" != "0"  ]; then
+  STATUS="running"
+
+# stoped
+#   !PID
+else
+  STATUS="stoped"
+fi
+}
+
 check_storage
 check_pid
 check_debug
 check_size
+check_status
+
+
 
 echo "{\
 \"height\":$HEIGHT,\
 \"progress\":$PROGRESS,\
 \"external\":\"$EXTERNALDRIVE\",\
 \"pid\":$PID,\
+\"pidstart\":$PIDSTART,\
+\"pidstop\":$PIDSTOP,\
+\"status\":$STATUS,\
 \"size\":\"$SIZE\"\
 }"
