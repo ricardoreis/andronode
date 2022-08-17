@@ -62,7 +62,7 @@ function loop(){
     .then(response => {
         // handle the response
         console.log("ok");
-        renderinfo();
+        //renderinfo();
     })
     .catch(error => {
         // handle the error
@@ -124,6 +124,30 @@ async function render(info){
     default:
       // code block
   } 
+}
+
+
+
+function stop() {
+   render("stopping")
+    let response =  fetch('stop');
+    console.log(response.status); // 200
+    console.log(response.statusText); // OK
+    if (response.status === 200) {
+        let data =  response.text();
+        console.log("Bitcoin Core is stoped.");
+    }
+}
+
+function start() {
+   render("starting")
+    let response =  fetch('start');
+    console.log(response.status); // 200
+    console.log(response.statusText); // OK
+    if (response.status === 200) {
+        let data =  response.text();
+        console.log("Bitcoin Core is running.");
+    }
 }
 
 
