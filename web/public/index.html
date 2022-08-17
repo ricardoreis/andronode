@@ -81,6 +81,7 @@ async function getinfo() {
 async function renderinfo() {
     let info = await getinfo();
     console.log(info);
+    info = JSON.stringify(info);
     document.querySelector("#json").innerHTML = info;
     renderinfo();
 }
