@@ -17,7 +17,7 @@
             </div>
             <div class="col-3">
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button id="btnStarStop" type="button" class="btn btn-sm btn-outline-danger">Stop</button>
+                <button id="btn" type="button" class="btn btn-sm btn-outline-danger">Stop</button>
               </div>
             </div>
           </div>
@@ -85,7 +85,7 @@ async function getinfo() {
 async function renderinfo() {
     let info = await getinfo();
     console.log(info);
-    if (status.status == "stoped") {
+    if (info.status == "stoped") {
     btn.className = 'btn btn-sm btn-success';
     status.className = 'fw-bold text-danger';
     progressbar.className = 'btn btn-sm btn-success';
@@ -97,7 +97,7 @@ async function renderinfo() {
 
 
 renderinfo();
-setInterval(loop, 3000);
+//setInterval(loop, 3000);
 
 
   </script>
