@@ -76,10 +76,10 @@ async function getinfo() {
 async function renderinfo() {
     info = await getinfo();
     if (wait == "start"){
-      render("starting");
+      info.status = "starting"
     }
     if (wait == "stop"){
-      render("stopping");
+      info.status = "stopping"
     }
     console.log(info);
     render(info.status);
