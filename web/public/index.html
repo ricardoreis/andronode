@@ -85,14 +85,20 @@ async function getinfo() {
 async function renderinfo() {
     let info = await getinfo();
     console.log(info);
-    if (info.status == "stoped") {
-    btn.className = 'btn btn-sm btn-success';
-    status.className = 'fw-bold text-danger';
-    progressbar.className = 'btn btn-sm btn-success';
-  }
+    render(info.status);
     info = JSON.stringify(info);
     document.querySelector("#json").innerHTML = info;
     renderinfo();
+}
+
+async function render(status){
+  if (status == "stoped") {
+    btn.className = 'btn btn-sm btn-success';
+    btn.innerHTML = 'Start'
+    status.className = 'fw-bold text-danger';
+    status.innerHTML = 'Bitcoin Core is stopped.';
+    progressbar.className = 'progress-bar bg-danger';
+  }
 }
 
 
