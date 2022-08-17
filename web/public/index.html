@@ -17,7 +17,7 @@
             </div>
             <div class="col-3">
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button id="btn" type="button" class="btn btn-sm btn-outline-danger">Stop</button>
+                <button id="btn" type="button" class="btn btn-sm btn-outline-danger" onclick="action()">Stop</button>
               </div>
             </div>
           </div>
@@ -45,20 +45,8 @@ let progressbar = document.querySelector(".progress-bar");
 let url = 'getinfo';
 
 let info = '';
-let loading = 0;
-/*
-fetch(url)
-    .then(response => {
-        // handle the response
-        console.log("ok");
-        renderinfo(url);
-    })
-    .catch(error => {
-        // handle the error
-        console.log("deu erro");
-        console.log("show loading screen");
-    });
-*/ 
+
+let wait = 0;
 
 function loop(){
     fetch(url)
@@ -86,19 +74,23 @@ async function getinfo() {
 }
 
 async function renderinfo() {
-  if (loading == 1){
-        return
-    }
     info = await getinfo();
+    if (wait == "start"){
+      start();
+    }
+    if (wait == "stop"){
+      stop();
+    }
     console.log(info);
     render(info.status);
     info = JSON.stringify(info);
     document.querySelector("#json").innerHTML = info;
     renderinfo();
+      
 }
 
-async function render(info){
-  switch(info) {
+async function render(infostatus){
+  switch(infostatus) {
     case "stoped":
       btn.className = 'btn btn-sm btn-success';
       btn.innerHTML = 'Start'
@@ -133,39 +125,47 @@ async function render(info){
 }
 
 
+function action(){
+    if (info.pid == 0){
+        start();
+    }else{
+        stop();
+    }
+}
 
-function stop() {
-  loading = 1;
-   render("stopping")
-    let response =  fetch('stop');
+
+async function stop() {
+  info.status = "stopping"
+  wait = "stop";
+  render("stopping");
+    let response =  await fetch('stop');
     console.log(response.status); // 200
     console.log(response.statusText); // OK
     if (response.status === 200) {
-        let data =  response.text();
+        let data = await response.text();
         console.log("Bitcoin Core is stoped.");
-        loading = 0;
+        wait = "0";
         renderinfo();
     }
 }
 
-function start() {
-  loading = 1;
-   render("starting")
-    let response =  fetch('start');
+async function start() {
+  wait = "start";
+  info.status = 'starting'; 
+  render("starting");
+    let response = await fetch('start');
     console.log(response.status); // 200
     console.log(response.statusText); // OK
     if (response.status === 200) {
-        let data =  response.text();
+        let data = await response.text();
         console.log("Bitcoin Core is running.");
-        loading = 0;
+        wait = "";
         renderinfo();
     }
 }
 
 
 renderinfo();
-//setInterval(loop, 3000);
-
 
   </script>
   </body>
