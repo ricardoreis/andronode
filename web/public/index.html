@@ -143,6 +143,8 @@ function stop() {
     if (response.status === 200) {
         let data =  response.text();
         console.log("Bitcoin Core is stoped.");
+        loading = 0;
+        renderinfo();
     }
 }
 
@@ -155,6 +157,8 @@ function start() {
     if (response.status === 200) {
         let data =  response.text();
         console.log("Bitcoin Core is running.");
+        loading = 0;
+        renderinfo();
     }
 }
 
