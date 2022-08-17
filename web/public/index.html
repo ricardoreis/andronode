@@ -45,6 +45,7 @@ let progressbar = document.querySelector(".progress-bar");
 let url = 'getinfo';
 
 let info = '';
+let loading = 0;
 /*
 fetch(url)
     .then(response => {
@@ -85,6 +86,9 @@ async function getinfo() {
 }
 
 async function renderinfo() {
+  if (loading == 1){
+        return
+    }
     info = await getinfo();
     console.log(info);
     render(info.status);
@@ -131,6 +135,7 @@ async function render(info){
 
 
 function stop() {
+  loading = 1;
    render("stopping")
     let response =  fetch('stop');
     console.log(response.status); // 200
@@ -142,6 +147,7 @@ function stop() {
 }
 
 function start() {
+  loading = 1;
    render("starting")
     let response =  fetch('start');
     console.log(response.status); // 200
