@@ -11,7 +11,8 @@
       <div class="row row justify-content-center">
         <div class="col-sm-12 col-md-6">
           <img src="images/bitcoin-core.svg" alt="Bitcoin Core ">
-          <hr>          <div class="row justify-content-between mt-3">
+          <hr>          
+          <div class="row justify-content-between mt-3 g-0">
             <div class="col-9">
               <p id="status" class="fw-bold text-success">Bitcoin Core is running.</p>
             </div>
@@ -113,7 +114,7 @@ async function render(infostatus){
       btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Stoping'
       status.className = 'fw-bold text-primary';
       status.innerHTML = 'Stopping Bitcoin Core. Hodl...';
-      progressbar.className = 'progress-bar progress-bar-striped progress-bar-animated bg-success';
+      progressbar.className = 'progress-bar progress-bar-striped progress-bar-animated bg-danger';
       break;
     case "starting":
       btn.className = 'btn btn-sm btn-success disabled';
