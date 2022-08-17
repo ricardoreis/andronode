@@ -43,6 +43,8 @@ let status = document.querySelector("#status");
 let progressbar = document.querySelector(".progress-bar");
 
 let url = 'getinfo';
+
+let info = '';
 /*
 fetch(url)
     .then(response => {
@@ -83,7 +85,7 @@ async function getinfo() {
 }
 
 async function renderinfo() {
-    let info = await getinfo();
+    info = await getinfo();
     console.log(info);
     render(info.status);
     info = JSON.stringify(info);
