@@ -92,13 +92,37 @@ async function renderinfo() {
 }
 
 async function render(info){
-  if (info == "stoped") {
+  /* if (info == "stoped") {
     btn.className = 'btn btn-sm btn-success';
     btn.innerHTML = 'Start'
     status.className = 'fw-bold text-danger';
     status.innerHTML = 'Bitcoin Core is stopped.';
     progressbar.className = 'progress-bar bg-danger';
   }
+  */
+
+  switch(info) {
+  case "stoped":
+    btn.className = 'btn btn-sm btn-success';
+    btn.innerHTML = 'Start'
+    status.className = 'fw-bold text-danger';
+    status.innerHTML = 'Bitcoin Core is stopped.';
+    progressbar.className = 'progress-bar bg-danger';
+    break;
+  case "running":
+    btn.className = 'btn btn-sm btn-outline-danger';
+    btn.innerHTML = 'Stop'
+    status.className = 'fw-bold text-success';
+    status.innerHTML = 'Bitcoin Core is running.';
+    progressbar.className = 'progress-bar progress-bar-striped progress-bar-animated bg-success';
+    break;
+  default:
+    // code block
+}
+
+  
+
+
 }
 
 
