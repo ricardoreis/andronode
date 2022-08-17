@@ -116,6 +116,13 @@ async function render(info){
     status.innerHTML = 'Bitcoin Core is running.';
     progressbar.className = 'progress-bar progress-bar-striped progress-bar-animated bg-success';
     break;
+  case "stopping":
+    btn.className = 'btn btn-sm btn-danger disabled';
+    btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Stoping'
+    status.className = 'fw-bold text-primary';
+    status.innerHTML = 'Stopping Bitcoin Core. Hodl....';
+    progressbar.className = 'progress-bar progress-bar-striped progress-bar-animated bg-success';
+    break;
   default:
     // code block
 }
