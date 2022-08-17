@@ -115,7 +115,7 @@ async function render(info){
       progressbar.className = 'progress-bar progress-bar-striped progress-bar-animated bg-success';
       break;
     case "starting":
-      btn.className = 'btn btn-sm btn-success';
+      btn.className = 'btn btn-sm btn-success disabled';
       btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Starting'
       status.className = 'fw-bold text-primary';
       status.innerHTML = 'Bitcoin Core is starting. Hodl...';
