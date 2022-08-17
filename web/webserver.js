@@ -45,7 +45,7 @@ const requestListener = function (req, res){
     }else if(req.url.match("\.svg$")){
         var imagePath = path.join(__dirname, 'public', req.url);
         var fileStream = fs.createReadStream(imagePath);
-        res.writeHead(200, {"Content-Type": "image/svg"});
+        res.writeHead(200, {"Content-Type": "image/svg+xml"});
         fileStream.pipe(res);
 
     }else if(req.url.match("\.js$")){
