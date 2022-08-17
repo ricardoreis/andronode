@@ -91,6 +91,6 @@ echo "{\
 \"pid\":$PID,\
 \"pidstart\":\"$PIDSTART\",\
 \"pidstop\":\"$PIDSTOP\",\
-\"status\":$STATUS,\
+\"status\":\"$STATUS\",\
 \"size\":\"$SIZE\"\
 }"
