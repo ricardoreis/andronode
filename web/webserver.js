@@ -69,13 +69,13 @@ const requestListener = function (req, res){
         res.end(json);
 
     }else if(req.url == "/stop"){
-        shell.exec('../stop.sh',{silent:false});
+        shell.exec(`bash ${config.andronode}/stop.sh`,{silent:false});
         res.setHeader("Content-Type", "application/json")
         res.writeHead(200);
         res.end("");
 
     }else if(req.url == "/start"){
-        shell.exec('../start.sh',{silent:false});
+        shell.exec(`bash ${config.andronode}/start.sh`,{silent:false});
         res.setHeader("Content-Type", "application/json")
         res.writeHead(200);
         res.end("");
