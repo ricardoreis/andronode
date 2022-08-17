@@ -76,10 +76,10 @@ async function getinfo() {
 async function renderinfo() {
     info = await getinfo();
     if (wait == "start"){
-      start();
+      render("starting");
     }
     if (wait == "stop"){
-      stop();
+      render("stopping");
     }
     console.log(info);
     render(info.status);
@@ -145,7 +145,7 @@ async function stop() {
     if (response.status === 200) {
         let data = await response.text();
         console.log("Bitcoin Core is stoped.");
-        wait = "0";
+        wait = "";
         renderinfo();
     }
 }
