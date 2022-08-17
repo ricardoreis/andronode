@@ -83,8 +83,8 @@ async function renderinfo() {
     }
     console.log(info);
     render(info.status);
-    info = JSON.stringify(info);
-    document.querySelector("#json").innerHTML = info;
+    infotxt = JSON.stringify(info);
+    document.querySelector("#json").innerHTML = infotxt;
     renderinfo();
       
 }
@@ -126,7 +126,8 @@ async function render(infostatus){
 
 
 function action(){
-    if (info.pid == 0){
+  console.log("info.pid: "+info.pid)
+    if (info.pid == "0"){
         start();
     }else{
         stop();
